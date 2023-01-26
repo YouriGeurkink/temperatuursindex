@@ -9,22 +9,43 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 
+<div class="display-4 text-center">Temperatuursindex</div>
+
+<div class="InfoContainer">
+  <h4>Info</h4>
+  <div class="currencyContainer">
+    <div style="margin-top: 16px">
+        <p>Met deze tool kun je zelf de temperatuursindex berekenen. 
+          Om de temperatuursindex bij kou te berekenen heb je de temperatuur en windsnelheid nodig, voor warmte zijn dit de tempteratuur en luchtvochtigheid. 
+          Deze gegevens kun je in de meeste weerapps terug vinden. <br>
+          Wanneer je de gegevens hebt ingevuld, druk je op berekenen en krijg je de temperatuursindex, het kleurniveau en een omschrijving van de omstandigheden.
+          Volg deze 
+          <a href="https://www.google.com/search?channel=fs&client=ubuntu&q=javascript+change+let+if+else">link</a> voor de adviezen.
+
+          <iframe src="https://fctwente-my.sharepoint.com/personal/y_geurkink_fctwenteheraclesacademie_nl/_layouts/15/embed.aspx?UniqueId=2b57550a-f368-49cc-8e17-cee37bffe2ac" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="Thermometer.pdf"></iframe>
+          </p>
+    </div>
+  </div>
+</div>
+
   <!-- Kou -->
-  <div class="display-4 text-center">Temperatuursindex</div>
+
   <div class="KouContainer">
     <h4>Kou</h4>
     <div class="currencyContainer">
       <div style="margin-top: 16px">
-          <p>Temperatuur </p>
-          <p>Windsnelheid </p>
+          <p>Temperatuur (°C)</p>
+          <p>Windsnelheid (km/h)</p>
       </div>
       <div style="margin-left: 20px">
-        <input class="form-control marginTopBottom" type="number" id="TempKou" value="">
-        <input class="form-control marginTopBottom" type="number" id="Windsnelheid" value="">
+        <input class="form-control marginTopBottom" type="number" id="TempKou" value="Vul een waarde klein dan 6 in." min = "-25" max="10">
+        <input class="form-control marginTopBottom" type="number" id="Windsnelheid" value="Vul een waarde tussen 1 en 100 in." min = "0" max="100">
         <button class="btn btn-primary" id="BerekenKou"onClick="getTIK()">Bereken</button>
       </div>
       <div class="TIK">
-        <h4 id="TIK">Temperatuursindex: </h4>
+        <h4 style ="font-size:20px" id="TIK">Temperatuursindex: </h4>
+        <h4 style ="font-size:20px" id="TIKK">Kleurniveau: </h4>
+        <h4 style ="font-size:20px" id="TIKO">Omstandigheden: </h4>
       </div>
     </div>
   </div>
@@ -34,44 +55,74 @@
       <h4><b>Warmte</b></h4>
       <div class="currencyContainer">
         <div style="margin-top: 16px">
-            <p>Temperatuur </p>
-            <p>Luchtvochtigheid </p>
+            <p>Temperatuur (°C)</p>
+            <p>Luchtvochtigheid (%)</p>
         </div>
         <div style="margin-left: 20px">
-          <input class="form-control marginTopBottom" type="number" id="TempWarmte" value="">
-          <input class="form-control marginTopBottom" type="number" id="Luchtvochtigheid" value="">
+          <input class="form-control marginTopBottom" type="number" id="TempWarmte" value="Vul een waarde tussen 20 en 40 in." min = "20" max="40">
+          <input class="form-control marginTopBottom" type="number" id="Luchtvochtigheid" value="Vul een waarde tussen 0 en 100 in." min = "0" max="100">
           <button class="btn btn-primary" id="BerekenWarmte" onClick="getTIW()">Bereken</button>
         </div>
         <div class="TIW">
-          <h4 id="TIW">Temperatuursindex: </h4>
-          <h4 id="TIW">Omstandigheden: </h4>
+          <h4 style ="font-size:20px" id="TIW">Temperatuursindex: </h4>
+          <h4 style ="font-size:20px" id="TIWK">Kleurniveau: </h4>
+          <h4 style ="font-size:20px" id="TIWO">Omstandigheden: </h4>
         </div>
       </div>
     </div>
-
-    
 
     <img src="https://fctwenteheraclesacademie.nl//wp_app/uploads/2020/08/FCTwente-Heracles.png" alt="FCTHALogo" id="FCTHALogo" class="center">
 
   <script>
   function getTIK()
     {
-      let TempK = Number(document.getElementById('TempKou').value);
-      let Windsnelheid = Number(document.getElementById('Windsnelheid').value);
-      let exponent = 0.16
-      let sumKou = Math.round(13.12+ 0.6215 * TempK + (0.3965 * TempK - 11.37) *Math.pow(Windsnelheid,0.16));
-      console.log(sumKou);
-      document.getElementById("TIK").textContent = "Temperatuursindex: "+sumKou;
-    };
+      var TempK = Number(document.getElementById('TempKou').value);
+var Windsnelheid = Number(document.getElementById('Windsnelheid').value);
+let SumKou = Math.round(13.12+ 0.6215 * TempK + (0.3965 * TempK - 11.37) *Math.pow(Windsnelheid,0.16));
+let OmstandighedenK
+let KleurniveauK
+console.log(SumKou);
+if (SumKou<=-15) {
+    KleurniveauK="Zwart";OmstandighedenK='Extreem'
+} else if (SumKou>=-15 &&SumKou<-10) {
+    KleurniveauK="Rood";OmstandighedenK='Zeer Zwaar'
+} else if (SumKou>=-10 && SumKou<-4) {
+    KleurniveauK="Oranje";OmstandighedenK='Zwaar'
+} else if (SumKou>=-4 && SumKou <0) {
+    KleurniveauK="Geel";OmstandighedenK='Niet Ideaal'
+} else if (SumKou>0) { 
+    KleurniveauK="Groen";OmstandighedenK='Goed'
+}
+document.getElementById("TIK").textContent = "Temperatuursindex: "+SumKou;
+document.getElementById("TIKO").textContent = "Omstandigheden: "+OmstandighedenK;
+document.getElementById("TIKK").textContent = "Kleurniveau: "+KleurniveauK;
+
+    }
 
   function getTIW()
     {
-        let TempW = Number(document.getElementById('TempWarmte').value);
-        let RH= Number(document.getElementById('Luchtvochtigheid').value);
-        let T= 32+TempW*1.8
-        let sumWarmte = Math.round(((-42.379 +  2.04901523*T + 10.14333127*RH - .22475541*T*RH -.00683783*T*T - .05481717*RH*RH + .00122874*T*T*RH + .00085282*T*RH*RH - .00000199*T*T*RH*RH)-32)*(5/9));
-        console.log(sumWarmte);
-        document.getElementById("TIW").textContent = "Temperatuursindex: "+sumWarmte;
+        var TempW = Number(document.getElementById('TempWarmte').value);
+        var RH= Number(document.getElementById('Luchtvochtigheid').value);
+        var T= 32+TempW*1.8
+        let SumWarmte = Math.round(((-42.379 +  2.04901523*T + 10.14333127*RH - .22475541*T*RH -.00683783*T*T - .05481717*RH*RH + .00122874*T*T*RH + .00085282*T*RH*RH - .00000199*T*T*RH*RH)-32)*(5/9));
+        let OmstandighedenW
+        let KleurniveauW
+        console.log(SumWarmte);
+        if (SumWarmte>=32) {
+            KleurniveauW="Zwart";OmstandighedenW='Extreem'
+        } else if (SumWarmte>=31 && SumWarmte<32) {
+            KleurniveauW="Rood";OmstandighedenW='Zeer Zwaar'
+        } else if (SumWarmte>=29 && SumWarmte<31) {
+            KleurniveauW="Oranje";OmstandighedenW='Zwaar'
+        } else if (SumWarmte>=27 && SumWarmte<29) {
+            KleurniveauW="Geel";OmstandighedenW='Niet Ideaal'
+        } else if (SumWarmte<27) { 
+            KleurniveauW="Groen";OmstandighedenW='Goed'
+        }
+        document.getElementById("TIW").textContent = "Temperatuursindex: "+SumWarmte;
+        document.getElementById("TIWO").textContent = "Omstandigheden: "+OmstandighedenW;
+        document.getElementById("TIWK").textContent = "Kleurniveau: "+KleurniveauW;
+
     };
 
 

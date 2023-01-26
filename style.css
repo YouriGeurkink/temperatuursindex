@@ -4,6 +4,16 @@ body {
     margin-bottom: 80px;
 }
 
+.InfoContainer {
+    margin: 50px auto 20px auto;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid darkgray;
+    border-radius: 5px;
+    width: 40%;
+    min-width: 500px;
+    height: 20%;
+}
+
 .KouContainer {
     margin: 50px auto 20px auto;
     padding: 10px 20px 10px 20px;
@@ -46,6 +56,7 @@ body {
 
 .TIW {
     margin: auto;
+    font-size: 4px;
 }
 
 .TIK {
