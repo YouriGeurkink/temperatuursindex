@@ -17,11 +17,12 @@
     <div style="margin-top: 16px">
         <p>Met deze tool kun je zelf de temperatuursindex berekenen. 
           Om de temperatuursindex bij kou te berekenen heb je de temperatuur en windsnelheid nodig, voor warmte zijn dit de tempteratuur en luchtvochtigheid. 
-          Deze gegevens kun je in de meeste weerapps terug vinden. <br>
+          Deze gegevens kun je in de meeste weerapps terug vinden. <br> <br>
           Wanneer je de gegevens hebt ingevuld, druk je op berekenen en krijg je de temperatuursindex, het kleurniveau en een omschrijving van de omstandigheden.
           Volg deze 
-          <a href="https://fctwente-my.sharepoint.com/:b:/g/personal/y_geurkink_fctwenteheraclesacademie_nl/EQpVVyto88xJjhfO43v_4qwBAek3h44qGyHpk7lKFVBd9Q?e=DnQEHJ">link</a> voor de bijbehorende adviezen.
-          </p>
+          <a href="https://fctwente-my.sharepoint.com/:b:/g/personal/y_geurkink_fctwenteheraclesacademie_nl/EQpVVyto88xJjhfO43v_4qwBAek3h44qGyHpk7lKFVBd9Q?e=DnQEHJ">link</a> voor de bijbehorende adviezen, of kijk hier onder aan de pagina.
+          <br> <br> Vragen of opmerkingen? Contacteer Youri Geurkink of Jurgen Koedijk.
+        </p>
     </div>
   </div>
 </div>
@@ -69,6 +70,15 @@
       </div>
     </div>
 
+    <div class="AdviesContainer">
+      <h4>Advies</h4>
+      <div class="currencyContainer">
+        <div style="margin-top: 16px">
+          <h4 style ="font-size:16px" id="Advies"></h4>
+        </div>
+      </div>
+    </div>
+
     <img src="https://fctwenteheraclesacademie.nl//wp_app/uploads/2020/08/FCTwente-Heracles.png" alt="FCTHALogo" id="FCTHALogo" class="center">
 
   <script>
@@ -79,21 +89,24 @@ var Windsnelheid = Number(document.getElementById('Windsnelheid').value);
 let SumKou = Math.round(13.12+ 0.6215 * TempK + (0.3965 * TempK - 11.37) *Math.pow(Windsnelheid,0.16));
 let OmstandighedenK
 let KleurniveauK
+let Advies
 console.log(SumKou);
 if (SumKou<=-15) {
-    KleurniveauK="Zwart";OmstandighedenK='Extreem'
+    KleurniveauK="Zwart";OmstandighedenK='Extreem';Advies="→ Dringend verzoek om buitenactiviteiten te verplaatsen naar geschikter moment (indien mogelijk, vroeger/later op de dag)."
 } else if (SumKou>=-15 &&SumKou<-10) {
-    KleurniveauK="Rood";OmstandighedenK='Zeer Zwaar'
+    KleurniveauK="Rood";OmstandighedenK='Zeer Zwaar';Advies="→ Pas kledij maximaal aan \n → Gebruik eventueel warmtebronnen \n → Blijf regelmatig in beweging \n → Blijf droog \n → Blijf uit de wind \n → Drink regelmatig"
 } else if (SumKou>=-10 && SumKou<-4) {
-    KleurniveauK="Oranje";OmstandighedenK='Zwaar'
+    KleurniveauK="Oranje";OmstandighedenK='Zwaar';Advies="→ Pas kledij maximaal aan \n → Gebruik eventueel warmtebronnen \n → Kom/blijf regelmatig in beweging \n → Blijf droog \n → Blijf uit de wind \n → Drink regelmatig"
 } else if (SumKou>=-4 && SumKou <0) {
-    KleurniveauK="Geel";OmstandighedenK='Niet Ideaal'
+    KleurniveauK="Geel";OmstandighedenK='Niet Ideaal';Advies="→ Pas kledij naar wens aan \n → Kom/blijf regelmatig in beweging \n → Blijf droog \n → Blijf uit de wind \n → Drink regelmatig"
 } else if (SumKou>0) { 
-    KleurniveauK="Groen";OmstandighedenK='Goed'
+    KleurniveauK="Groen";OmstandighedenK='Goed';Advies="→ Geen aanpassingen"
 }
+
 document.getElementById("TIK").textContent = "Temperatuursindex: "+SumKou;
 document.getElementById("TIKO").textContent = "Omstandigheden: "+OmstandighedenK;
 document.getElementById("TIKK").textContent = "Kleurniveau: "+KleurniveauK;
+document.getElementById("Advies").innerText = Advies;
 
     }
 
@@ -107,19 +120,20 @@ document.getElementById("TIKK").textContent = "Kleurniveau: "+KleurniveauK;
         let KleurniveauW
         console.log(SumWarmte);
         if (SumWarmte>=32) {
-            KleurniveauW="Zwart";OmstandighedenW='Extreem'
+            KleurniveauW="Zwart";OmstandighedenW='Extreem';Advies="→ Dringend verzoek om buitenactiviteiten te verplaatsen naar geschikter moment (indien mogelijk, vroeger/later op de dag)."
         } else if (SumWarmte>=31 && SumWarmte<32) {
-            KleurniveauW="Rood";OmstandighedenW='Zeer Zwaar'
+            KleurniveauW="Rood";OmstandighedenW='Zeer Zwaar';Advies="→ Max 1 uur activiteit \n → Elke 10 minuten drinken \n → Elke 10 minuten 4 minuten pauze \n → Beschikbaar water in ton/emmer \n → Koelen met natte handdoeken \n → Drinken water + isotone sportdrank"
         } else if (SumWarmte>=29 && SumWarmte<31) {
-            KleurniveauW="Oranje";OmstandighedenW='Zwaar'
+            KleurniveauW="Oranje";OmstandighedenW='Zwaar';Advies="→ Max 2 uur activiteit \n → Elke 15 minuten drinken \n → Elke 15 minuten 4 minuten pauze \n → Beschikbaar water in ton/emmer \n → Koelen met natte handdoeken \n → Drinken water + isotone sportdrank"
         } else if (SumWarmte>=27 && SumWarmte<29) {
-            KleurniveauW="Geel";OmstandighedenW='Niet Ideaal'
+            KleurniveauW="Geel";OmstandighedenW='Niet Ideaal';Advies="→ Elke 25 minuten drinken \n → Drinken water + isotone sportdrank"
         } else if (SumWarmte<27) { 
-            KleurniveauW="Groen";OmstandighedenW='Goed'
+            KleurniveauW="Groen";OmstandighedenW='Goed';Advies="→ Geen aanpassingen"
         }
         document.getElementById("TIW").textContent = "Temperatuursindex: "+SumWarmte;
         document.getElementById("TIWO").textContent = "Omstandigheden: "+OmstandighedenW;
         document.getElementById("TIWK").textContent = "Kleurniveau: "+KleurniveauW;
+        document.getElementById("Advies").innerText = Advies;
 
     };
 
