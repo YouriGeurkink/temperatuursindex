@@ -5,7 +5,7 @@ body {
 }
 
 .KouContainer {
-    margin: 50px auto 150px auto;
+    margin: 50px auto 20px auto;
     padding: 10px 20px 10px 20px;
     border: 2px solid darkgray;
     border-radius: 5px;
@@ -15,7 +15,7 @@ body {
 }
 
 .WarmteContainer {
-    margin: 30px auto 50px auto;
+    margin: 20px auto 20px auto;
     padding: 10px 20px 10px 20px;
     border: 2px solid darkgray;
     border-radius: 5px;
@@ -25,8 +25,8 @@ body {
 }
 
 .marginTopBottom {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 /* Currency */
@@ -58,4 +58,11 @@ body {
 
 #BerekenWarmte {
     width: 100%;
+}
+
+.center {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 150px;
 }

@@ -6,7 +6,7 @@
   <title>Temperatuursindex</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
   <!-- Kou -->
@@ -49,12 +49,17 @@
       </div>
     </div>
 
+    
+
+    <img src="https://fctwenteheraclesacademie.nl//wp_app/uploads/2020/08/FCTwente-Heracles.png" alt="FCTHALogo" id="FCTHALogo" class="center">
+
   <script>
   function getTIK()
     {
       let TempK = Number(document.getElementById('TempKou').value);
       let Windsnelheid = Number(document.getElementById('Windsnelheid').value);
-      let sumKou = TempK + Windsnelheid;
+      let exponent = 0.16
+      let sumKou = Math.round(13.12+ 0.6215 * TempK + (0.3965 * TempK - 11.37) *Math.pow(Windsnelheid,0.16));
       console.log(sumKou);
       document.getElementById("TIK").textContent = "Temperatuursindex: "+sumKou;
     };
@@ -62,11 +67,14 @@
   function getTIW()
     {
         let TempW = Number(document.getElementById('TempWarmte').value);
-        let LuchtV = Number(document.getElementById('Luchtvochtigheid').value);
-        const sumWarmte = TempW * LuchtV;
+        let RH= Number(document.getElementById('Luchtvochtigheid').value);
+        let T= 32+TempW*1.8
+        let sumWarmte = Math.round(((-42.379 +  2.04901523*T + 10.14333127*RH - .22475541*T*RH -.00683783*T*T - .05481717*RH*RH + .00122874*T*T*RH + .00085282*T*RH*RH - .00000199*T*T*RH*RH)-32)*(5/9));
         console.log(sumWarmte);
         document.getElementById("TIW").textContent = "Temperatuursindex: "+sumWarmte;
     };
+
+
 
     
     </script>
