@@ -20,7 +20,7 @@
           Deze gegevens kun je in de meeste weerapps terug vinden. <br> <br>
           Wanneer je de gegevens hebt ingevuld, druk je op berekenen en krijg je de temperatuursindex, het kleurniveau en een omschrijving van de omstandigheden.
           Volg deze 
-          <a href="https://fctwente-my.sharepoint.com/:b:/g/personal/y_geurkink_fctwenteheraclesacademie_nl/EaYQa1MOdAFBrCqpymoV_94B2ZAOvh_4Gw_-teK-Jvrj-w?e=1bCyuE">link</a> voor de bijbehorende adviezen, of kijk hier onder aan de pagina.
+          <a href="https://fctwente-my.sharepoint.com/:b:/g/personal/y_geurkink_fctwenteheraclesacademie_nl/EXy55PLeV0hLovgvRc9YxXsBfDM5lsLUaPu9EnPIx2RMsg?e=tFNK2L">link</a> voor de bijbehorende adviezen, of kijk hier onder aan de pagina.
           <br> <br> Vragen of opmerkingen? <br> Contacteer dan <a href="mailto: y.geurkink@fctwenteheraclesacademie.nl">Youri Geurkink</a> of <a href="mailto: j.koedijk@fctwenteheraclesacademie.nl">Jurgen Koedijk</a>.
         </p>
     </div>
@@ -92,7 +92,7 @@ let KleurniveauK
 let Advies
 console.log(SumKou);
 if (SumKou<=-15) {
-    KleurniveauK="Zwart";OmstandighedenK='Extreem';Advies="→ Dringend verzoek om buitenactiviteiten te verplaatsen naar geschikter moment (indien mogelijk, vroeger/later op de dag)."
+    KleurniveauK="Zwart";OmstandighedenK='Extreem';Advies="→ Dringend verzoek om buitenactiviteiten te verplaatsen naar geschikter moment (indien mogelijk, vroeger/later op de dag). \n \n Indien niet mogelijk, volg dan de volgende adviezen:\n → Pas kledij maximaal aan \n → Gebruik eventueel warmtebronnen \n → Blijf regelmatig in beweging \n → Blijf droog \n → Blijf uit de wind \n → Drink regelmatig"
 } else if (SumKou>=-15 &&SumKou<-10) {
     KleurniveauK="Rood";OmstandighedenK='Zeer Zwaar';Advies="→ Pas kledij maximaal aan \n → Gebruik eventueel warmtebronnen \n → Blijf regelmatig in beweging \n → Blijf droog \n → Blijf uit de wind \n → Drink regelmatig"
 } else if (SumKou>=-10 && SumKou<-4) {
@@ -120,7 +120,7 @@ document.getElementById("Advies").innerText = Advies;
         let KleurniveauW
         console.log(SumWarmte);
         if (SumWarmte>=32) {
-            KleurniveauW="Zwart";OmstandighedenW='Extreem';Advies="→ Dringend verzoek om buitenactiviteiten te verplaatsen naar geschikter moment (indien mogelijk, vroeger/later op de dag)."
+            KleurniveauW="Zwart";OmstandighedenW='Extreem';Advies="→ Dringend verzoek om buitenactiviteiten te verplaatsen naar geschikter moment (indien mogelijk, vroeger/later op de dag).  \n \n Indien niet mogelijk, volg dan de volgende adviezen:\n → Elke 10 minuten drinken \n → Maximaal aantal pauzes \n → Beschikbaar water in ton/emmer \n → Koelen met natte handdoeken \n → Drinken water + isotone sportdrank"
         } else if (SumWarmte>=31 && SumWarmte<32) {
             KleurniveauW="Rood";OmstandighedenW='Zeer Zwaar';Advies="→ Max 1 uur activiteit \n → Elke 10 minuten drinken \n → Elke 10 minuten 4 minuten pauze \n → Beschikbaar water in ton/emmer \n → Koelen met natte handdoeken \n → Drinken water + isotone sportdrank"
         } else if (SumWarmte>=29 && SumWarmte<31) {
