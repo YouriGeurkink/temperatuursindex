@@ -131,7 +131,7 @@ document.getElementById("Advies").innerText = Advies;
             KleurniveauW="Oranje";OmstandighedenW='Zwaar';Advies="→ Max 2 uur activiteit \n → Elke 15 minuten drinken \n → Elke 15 minuten 4 minuten pauze \n → Beschikbaar water in ton/emmer \n → Koelen met natte handdoeken \n → Drinken water + isotone sportdrank"
         } else if (SumWarmte>=27 && SumWarmte<29) {
             KleurniveauW="Geel";OmstandighedenW='Niet Ideaal';Advies="→ Elke 25 minuten drinken \n → Drinken water + isotone sportdrank"
-        } else if (SumWarmte<27) { 
+        } else if (SumWarmte<=27) { 
             KleurniveauW="Groen";OmstandighedenW='Goed';Advies="→ Geen aanpassingen"
         }
         document.getElementById("TIW").textContent = "Temperatuursindex: "+SumWarmte;
